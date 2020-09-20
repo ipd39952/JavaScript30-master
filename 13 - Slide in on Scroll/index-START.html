@@ -57,6 +57,33 @@
         if (callNow) func.apply(context, args);
       };
     }
+    //Selectors
+    const sliderImages = document.querySelectorAll('.slide-in');
+
+    //Functions
+    function checkSlide(e){
+      sliderImages.forEach(sliderImage => {
+        // Y position of the very top of the window window + Height of the window
+        // (So far the bottom line of the screen in other words)
+        // - Half the height of the pictures
+        // So slideInAt is the point where we should trigger a function that fades images in
+        const slideInAt = (window.scrollY + window.innerHeight) - sliderImage.height / 2;
+        // Y position of the bottom of each image
+        const imageBottom = sliderImage.offsetTop + sliderImage.height;
+
+        const isHalfShown = slideInAt > sliderImage.offsetTop;
+        const isNotScrolledPast = window.scrollY < imageBottom;
+        if (isHalfShown && isNotScrolledPast) {
+          sliderImage.classList.add('active');
+        } else {
+          sliderImage.classList.remove('active');
+        }
+      });
+    }
+
+    //Event Listeners
+
+    window.addEventListener('scroll', debounce(checkSlide, 100));
 
   </script>
 
@@ -68,11 +95,11 @@
       font-size: 20px;
       font-weight: 200;
     }
-    
+
     body {
       margin: 0;
     }
-    
+
     *, *:before, *:after {
       box-sizing: inherit;
     }
@@ -107,7 +134,7 @@
     .align-left.slide-in {
       transform: translateX(-30%) scale(0.95);
     }
-    
+
     .align-right.slide-in {
       transform: translateX(30%) scale(0.95);
     }
