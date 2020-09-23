@@ -18,7 +18,7 @@
     html {
       font-size: 100px;
     }
-    
+
     body {
       margin: 0;
       font-family: sans-serif;
@@ -61,10 +61,12 @@
   <script>
     const arrow = document.querySelector('.arrow');
     const speed = document.querySelector('.speed-value');
+    const coords = document.querySelector('.coords');
 
     navigator.geolocation.watchPosition((data) => {
       console.log(data);
       speed.textContent = data.coords.speed;
+      speed.textContent = `Lat: ${data.coords.latitude}, Lon: ${data.coords.longitude}`;
       arrow.style.transform = `rotate(${data.coords.heading}deg)`;
     }, (err) => {
       console.error(err);
