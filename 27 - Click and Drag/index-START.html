@@ -35,6 +35,42 @@
   </div>
 
 <script>
+  const slider = document.querySelector('.items');
+  let isDown = false;
+  let startX;
+  let scrollLeft;
+
+  slider.addEventListener('mousedown', (e) => {
+    isDown = true;
+
+    slider.classList.add('active');
+    // e.pageX returns the x position(from the whole page) of where the event happened
+    // slider.offsetLeft makes sure to subtract any margins ot the left side
+    // so that we get the exact X click position inside of the "slider" element
+    startX = e.pageX - slider.offsetLeft;
+    // store the initial scroll we have
+    scrollLeft = slider.scrollLeft;
+  });
+  slider.addEventListener('mouseleave', () => {
+    isDown = false;
+
+    slider.classList.remove('active');
+  });
+  slider.addEventListener('mouseup', () => {
+    isDown = false;
+
+    slider.classList.remove('active');
+  });
+  slider.addEventListener('mousemove', (e) => {
+    // stop function here if LMB isn't pressed
+    if(!isDown) return;
+    // Use preventDefault() to avoid the cursor selecting text
+    e.preventDefault();
+    const x = e.pageX - slider.offsetLeft;
+    // walk stores the current curosr deviation from the last click
+    const walk = x - startX;
+    slider.scrollLeft = scrollLeft - walk;
+  });
 </script>
 
   </body>
