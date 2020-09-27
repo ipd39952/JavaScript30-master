@@ -1,0 +1,24 @@
+{
+  "name": "javascript30-master",
+  "version": "1.0.0",
+  "description": "![](https://javascript30.com/images/JS3-social-share.png)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ipd39952/JavaScript30-master.git"
+  },
+  "author": "Ivaylo D",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ipd39952/JavaScript30-master/issues"
+  },
+  "homepage": "https://github.com/ipd39952/JavaScript30-master#readme",
+  "devDependencies": {
+    "eslint": "^7.10.0",
+    "eslint-config-airbnb-base": "^14.2.0",
+    "eslint-plugin-import": "^2.22.0"
+  }
+}
