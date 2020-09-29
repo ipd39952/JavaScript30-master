@@ -52,6 +52,7 @@ console.table(sortedByYearsLived.reverse());
 const sortedNames = people.sort((a,b) => {
 	const [aLast, aFirst] = a.split(", ");
 	const [bLast, bFirst] = b.split(", ");
+	console.log(aFirst, bFirst);
 	return aLast - bLast;
 });
 console.log(sortedNames);
